@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="www.thymeleaf.org">
+<head>
+    <title>Options</title>
+</head>
+<body>
+<p th:text="${message}"></p>
+<p>What would you like to do now?</p>
+<form th:action="@{/depo}" method="post">
+    <div><input type="submit" value="Make a Deposit"/></div>
+</form>
+<form th:action="@{/with}" method="post">
+    <div><input type="submit" value="Make a Withdrawal"/></div>
+</form>
+<form th:action="@{/hist}" method="post">
+    <div><input type="submit" value="View Transaction History"/></div>
+</form>
+</body>
+</html>

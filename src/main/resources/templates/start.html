@@ -1,9 +1,14 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="www.thymeleaf.org">
 <head>
-<title>Spring Security Example</title>
+<title>SpringBoot Bank ATM</title>
 </head>
 <body>
+    <p th:utext="${message}"></p>
+    <form th:action="@{/next}" th:object="${atm}" method="post">
+        <div><label> Customer ID : <input type="text" name="custid" th:field="*{custId}"/> </label></div>
+        <div><label> Acct # <input type="text" name="acct" th:field="*{acct}"/> </label></div>
+        <div><input type="submit" value="Continue"/></div>
+    </form>
 </body>
 </html>
