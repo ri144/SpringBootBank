@@ -11,25 +11,21 @@ import javax.validation.constraints.Size;
  */
 @Entity
 public class Atm {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
     private long custId;
 
     @Size(min=2, max=30)
     private String reason;
 
-    @Size(min=7, max=7)
     private int acct;
 
     private double amount;
 
-    public long getcustId() {
-        return custId;
-    }
+    private String action;
 
-    public void setcustId(long id) {
-        this.custId = id;
-    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long transactionId;
 
     public String getReason() {
         return reason;
@@ -55,4 +51,27 @@ public class Atm {
         this.amount = amount;
     }
 
+    public long getCustId() {
+        return custId;
+    }
+
+    public void setCustId(long custId) {
+        this.custId = custId;
+    }
+
+    public long getTransactionId() {
+        return transactionId;
+    }
+
+    public void setTransactionId(long transactionId) {
+        this.transactionId = transactionId;
+    }
+
+    public String getAction() {
+        return action;
+    }
+
+    public void setAction(String action) {
+        this.action = action;
+    }
 }

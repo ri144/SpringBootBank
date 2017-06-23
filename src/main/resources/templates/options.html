@@ -6,7 +6,7 @@
 <body>
 <p th:text="${message}"></p>
 <p>What would you like to do now?</p>
-<form th:action="@{/depo}" method="post">
+<!--<form th:action="@{/depo}" method="post">
     <div><input type="submit" value="Make a Deposit"/></div>
 </form>
 <form th:action="@{/with}" method="post">
@@ -14,6 +14,10 @@
 </form>
 <form th:action="@{/hist}" method="post">
     <div><input type="submit" value="View Transaction History"/></div>
-</form>
+</form>-->
+<a href="deposit.html">Make a deposit</a><br/>
+<a href="withdraw.html">Make a withdrawal</a><br/>
+<a href="history.html">View Transaction History</a><br/>
+<a href="balance.html">View Account Balance</a>
 </body>
 </html>

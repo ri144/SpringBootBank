@@ -5,8 +5,9 @@
 </head>
 <body>
     <form th:action="@{/depositForm}" th:object="${atm}" method="post">
-        <div><label> Customer ID : <input type="text" name="custid" th:field="*{custId}"/> </label></div>
-        <div><label> Acct # <input type="text" name="acct" th:field="*{acct}"/> </label></div>
+        <div><label> Customer ID : <input type="text" name="custId" th:field="*{custId}"/> </label></div>
+        <div><label> Acct # <input type="text" name="acct" th:field="*{acct}"/> </label>
+        <span th:if="${#fields.hasErrors('acct')}" th:errors="*{acct}">Account Error</span></div>
         <div><label> Amount : <input type="text" name="amount" th:field="*{amount}"/> </label></div>
         <div><label> Reason <input type="text" name="reason" th:field="*{reason}"/> </label></div>
         <div><input type="submit" value="Continue"/></div>

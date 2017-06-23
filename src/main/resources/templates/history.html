@@ -4,8 +4,10 @@
 <title>Transaction History</title>
 </head>
 <body>
-    <form th:action="@{/history}" method="post">
-        <div><input type="submit" value="Continue"/></div>
-    </form>
+<div th:each="val : ${values}">
+    <p th:text="${val.action} + ' ' + ${val.amount}">
+    </p>
+</div>
+<a href="/">Continue</a>
 </body>
 </html>
