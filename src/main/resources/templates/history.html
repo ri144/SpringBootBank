@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="www.thymeleaf.org">
-<head>
+<head th:replace="options :: head">
 <title>Transaction History</title>
 </head>
 <body>
+<nav th:replace="options :: nav"></nav>
 <div th:each="val : ${values}">
     <p th:text="${val.action} + ' ' + ${val.amount} + ' ' + ${val.reason}">
     </p>
