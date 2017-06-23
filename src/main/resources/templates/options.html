@@ -17,7 +17,19 @@
 </form>-->
 <a href="deposit.html">Make a deposit</a><br/>
 <a href="withdraw.html">Make a withdrawal</a><br/>
-<a href="history.html">View Transaction History</a><br/>
-<a href="balance.html">View Account Balance</a>
+<form th:action="@{/history}" th:object="${holder}" method="post">
+    <div><label>View Transaction History for Acct #: <input type="text" name="acct" th:field="*{acct}"/> </label></div>
+    <div><input type="submit" value="Continue"/></div>
+</form>
+<form th:action="@{/balance}" th:object="${holder}" method="post">
+    <div><label>View Account Balance for Acct #: <input type="text" name="acct" th:field="*{acct}"/> </label></div>
+    <div><input type="submit" value="Continue"/></div>
+</form>
+<br/>
+<h2>Accounts</h2>
+<div th:each="val : ${accounts}">
+    <p th:text="'Account #: ' + ${val}">
+    </p>
+</div>
 </body>
 </html>

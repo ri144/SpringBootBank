@@ -5,7 +5,7 @@
 </head>
 <body>
 <div th:each="val : ${values}">
-    <p th:text="${val.action} + ' ' + ${val.amount}">
+    <p th:text="${val.action} + ' ' + ${val.amount} + ' ' + ${val.reason}">
     </p>
 </div>
 <a href="/">Continue</a>

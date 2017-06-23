@@ -5,7 +5,6 @@
 </head>
 <body>
 <form th:action="@{/withdrawForm}" th:object="${atm}" method="post">
-    <div><label> Customer ID : <input type="text" name="custId" th:field="*{custId}"/> </label></div>
     <div><label> Acct # <input type="text" name="acct" th:field="*{acct}"/> </label>
         <span th:if="${#fields.hasErrors('acct')}" th:errors="*{acct}">Account Error</span></div>
     <div><label> Amount : <input type="text" name="amount" th:field="*{amount}"/> </label></div>
