@@ -14,6 +14,7 @@ package com.example.demo;
 
         import javax.validation.Valid;
         import java.security.Principal;
+        import java.util.ArrayList;
         import java.util.Collection;
         import java.util.List;
         import java.util.Locale;
@@ -42,8 +43,16 @@ public class HomeController {
 
     @RequestMapping("/")
     public String login(Model model, Principal principal) {
-        model.addAttribute("message", "Welcome, pick something to do.");
-        model.addAttribute("accounts", atmRepo.findAcctByCustId(Long.valueOf(principal.getName())));
+        String input = "Welcome user " + principal.getName();
+        List<Atm> list = atmRepo.findDistinctByCustId(Long.valueOf(principal.getName()));
+        List<Integer> myList =  new ArrayList<Integer>();
+        for(Atm a : list){
+            if(!myList.contains(a.getAcct())) {
+                myList.add(a.getAcct());
+            }
+        }
+        model.addAttribute("accounts", myList);
+        model.addAttribute("message", input);
         model.addAttribute("holder", new Holder());
         return "options";
     }
@@ -57,9 +66,14 @@ public class HomeController {
     @PostMapping("/next")
     public String base(@ModelAttribute Atm atm, Model model, Principal principal, BindingResult bindingResult) {
         String input = "Welcome user " + String.valueOf(atm.getCustId());
-        model.addAttribute("message", input);
-       // myAtm = atm;
-        model.addAttribute("accounts", atmRepo.findAcctByCustId(Long.valueOf(principal.getName())));
+        List<Atm> list = atmRepo.findDistinctByCustId(Long.valueOf(principal.getName()));
+        List<Integer> myList =  new ArrayList<Integer>();
+        for(Atm a : list){
+            if(!myList.contains(a.getAcct())) {
+                myList.add(a.getAcct());
+            }
+        }
+        model.addAttribute("accounts", myList);
         model.addAttribute("holder", new Holder());
         return "options";
     }
@@ -112,8 +126,15 @@ public class HomeController {
         atm.setAction("deposit");
         atm.setCustId(Long.valueOf(principal.getName()));
         atmRepo.save(atm);
+        List<Atm> list = atmRepo.findDistinctByCustId(Long.valueOf(principal.getName()));
+        List<Integer> myList =  new ArrayList<Integer>();
+        for(Atm a : list){
+            if(!myList.contains(a.getAcct())) {
+                myList.add(a.getAcct());
+            }
+        }
         model.addAttribute("message", "Deposit successful");
-        model.addAttribute("accounts", atmRepo.findAcctByCustId(Long.valueOf(principal.getName())));
+        model.addAttribute("accounts", myList);
         model.addAttribute("holder", new Holder());
         return "options";
     }
@@ -127,8 +148,15 @@ public class HomeController {
         atm.setAmount(atm.getAmount()*-1);
         atm.setCustId(Long.valueOf(principal.getName()));
         atmRepo.save(atm);
+        List<Atm> list = atmRepo.findDistinctByCustId(Long.valueOf(principal.getName()));
+        List<Integer> myList =  new ArrayList<Integer>();
+        for(Atm a : list){
+            if(!myList.contains(a.getAcct())) {
+                myList.add(a.getAcct());
+            }
+        }
         model.addAttribute("message", "Withdrawal successful");
-        model.addAttribute("accounts", atmRepo.findAcctByCustId(Long.valueOf(principal.getName())));
+        model.addAttribute("accounts", myList);
         model.addAttribute("holder", new Holder());
         return "options";
     }
