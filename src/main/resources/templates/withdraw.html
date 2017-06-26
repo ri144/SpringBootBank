@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="www.thymeleaf.org">
-<head th:replace="options :: head">
+<head th:replace="base :: base_head">
     <title>Withdraw</title>
 </head>
 <body>
-<nav th:replace="options :: nav"></nav>
+<nav th:replace="base :: nav"></nav>
 <form th:action="@{/withdrawForm}" th:object="${atm}" method="post">
     <div><label> Acct # <input type="text" name="acct" th:field="*{acct}"/> </label>
         <span th:if="${#fields.hasErrors('acct')}" th:errors="*{acct}">Account Error</span></div>
